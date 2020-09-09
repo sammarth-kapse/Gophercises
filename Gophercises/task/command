@@ -1,0 +1,39 @@
+Points to get started
+
+1. terminal :   go get github.com/spf13/cobra/cobra
+
+2. Create a dir named 'task'
+
+3. terminal :   go mod init task
+
+4. Write go code:
+        4.1 main.go -
+            `
+                package main
+
+                import "task/cmd"
+
+                func main() {
+        	        cmd.RootCmd.Execute()
+                }
+            `
+
+        4.2 create a dir under task 'cmd'
+        4.3 make a file root.go
+        4.4 root.go -
+            '
+                package cmd
+
+                import "github.com/spf13/cobra"
+
+                var RootCmd = &cobra.Command{
+                	Use: "task",
+                	Short: "Task Manager for you!",
+                }
+            '
+
+5. terminal :   export PATH=$PATH:$(task $(go list -f '{{.Target}}' .))
+
+6. terminal:    'go install .'
+
+7. terminal:    'task'
